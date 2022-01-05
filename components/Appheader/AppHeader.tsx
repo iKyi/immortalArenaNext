@@ -52,6 +52,7 @@ const HeaderNavButton = React.forwardRef((props: any, ref) => {
         </Button>
     )
 });
+HeaderNavButton.displayName = 'HeaderNavButton';
 
 const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
     const { social } = useContext(GlobalContext);
