@@ -35,7 +35,12 @@ const WhyBox: React.VFC<WhyBoxPropsType> = ({ children, data }) => {
               <Typography variant="body2">{whyBoxContent}</Typography>
             </Box>
             {whyImage && (
-              <Image width={573} height={219} src={getStrapiMedia(whyImage)} />
+              <Image
+                width={573}
+                height={219}
+                src={getStrapiMedia(whyImage)}
+                alt="Why Immortalarena image"
+              />
             )}
           </Grid>
           <Grid item xs={12} md={6} sx={{ mt: Mobile ? 10 : 0 }}>

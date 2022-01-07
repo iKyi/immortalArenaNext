@@ -131,7 +131,7 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
               >
                 <iframe
                   width="100%"
-                  height="315"
+                  height="280"
                   src={introVideoUrl}
                   title="YouTube video player"
                   frameBorder="0"

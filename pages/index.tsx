@@ -10,6 +10,7 @@ import WhyBox from "../components/HomepageComponents/WhyBox";
 import MileStonesBox, {
   IMilestoneEntry,
 } from "../components/HomepageComponents/MileStonesBox";
+import ArticlesHome from "../components/HomepageComponents/ArticlesHome";
 
 type HomeProps = {
   main: Record<any, any>;
@@ -18,8 +19,6 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ main, posts }) => {
   const { seo, backgroundImage, milestones } = main;
-
-  console.log(posts.slice(Math.max(posts.length - 4, 1)));
 
   return (
     <LayoutWrapper bgImg={backgroundImage}>
@@ -30,6 +29,7 @@ const Home: NextPage<HomeProps> = ({ main, posts }) => {
       <MileStonesBox data={milestones as IMilestoneEntry[]} />
       <WhyBox data={main} />
       <FaqBox data={main} />
+      <ArticlesHome posts={posts} />
     </LayoutWrapper>
   );
 };
@@ -38,10 +38,11 @@ export async function getStaticProps() {
   // Run API calls in parallel
   const [main, posts] = await Promise.all([
     fetchAPI("/home-page?populate=*"),
-    fetchAPI("/posts?sort[0]=updatedAt"),
+    fetchAPI("/posts?populate=*&sort[0]=updatedAt"),
   ]);
+  let filteredPosts = posts.slice(Math.max(posts.length - 4, 1));
   return {
-    props: { main, posts },
+    props: { main, posts: filteredPosts },
     revalidate: 60,
   };
 }
