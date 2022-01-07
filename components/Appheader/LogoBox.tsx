@@ -43,7 +43,7 @@ const LogoBox: React.VFC<LogoBoxPropsType> = ({ children }) => {
                         zIndex: 2, left: '50%', right: '50%', width: Mobile ? '40px' : '76px', position: 'absolute', transform: 'translate(-50%, -30%)'
                     }}
                 >
-                    <Image src={getStrapiMedia(logo)} width={Mobile ? '40px' : '76px'} height={Mobile ? '67px' : '128px'} />
+                    <Image src={getStrapiMedia(logo)} width={Mobile ? '40px' : '76px'} height={Mobile ? '67px' : '128px'} alt="Immortal Arena Logo Image" />
                 </Box>
             </Link>
         </Box >

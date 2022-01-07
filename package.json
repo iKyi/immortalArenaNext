@@ -1,5 +1,5 @@
 {
-  "name": "immortalArena",
+  "name": "immortal-arena",
   "private": true,
   "scripts": {
     "dev": "next dev",
