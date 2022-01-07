@@ -30,7 +30,7 @@ const FourOhFour: React.VFC<FourOhFourPropsType> = ({ children }) => {
                 fontSize: "2.5rem",
               }}
             >
-              We're sorry, the requested page was not found.
+              {"We're sorry, the requested page was not found."}
             </Typography>
             <Box
               sx={{
