@@ -56,7 +56,11 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
                     <Button variant="angled">{howitWorksButton.text}</Button>
                   </Link>
                 ) : (
-                  <a href={howitWorksButton.url} target="_blank">
+                  <a
+                    href={howitWorksButton.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {howitWorksButton.text}
                   </a>
                 )}

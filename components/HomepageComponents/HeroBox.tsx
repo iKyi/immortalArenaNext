@@ -81,7 +81,11 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                           <Button variant="angled">{heroButton.text}</Button>
                         </Link>
                       ) : (
-                        <a href={heroButton.url} target="_blank">
+                        <a
+                          href={heroButton.url}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
                           {heroButton.text}
                         </a>
                       )}

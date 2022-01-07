@@ -81,6 +81,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                 key={item.id}
                 href={item.url}
                 target="_blank"
+                rel="noreferrer"
                 sx={{
                   color: "white",
                   display: "flex",

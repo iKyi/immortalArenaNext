@@ -26,7 +26,12 @@ const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
         <Typography variant="body2">{content}</Typography>
       </Box>
       {imgUrl && (
-        <Image width={354} height={132} src={getStrapiMedia(imgUrl)} />
+        <Image
+          width={354}
+          height={132}
+          src={getStrapiMedia(imgUrl)}
+          alt="A new way to earn AEXP"
+        />
       )}
     </Box>
   );
