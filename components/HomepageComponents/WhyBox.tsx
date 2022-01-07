@@ -20,7 +20,7 @@ const WhyBox: React.VFC<WhyBoxPropsType> = ({ children, data }) => {
   return (
     <Box
       sx={{
-        py: Mobile ? 6 : 18,
+        py: Mobile ? 6 : 12,
         background: `url('/bigLogoFaded.png') , url('/bg_skull_right.png')`,
         backgroundSize: "auto 70% , auto 110%",
         backgroundPosition: "left center, 110% center",

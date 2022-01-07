@@ -75,7 +75,7 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                   }}
                 >
                   {heroButton && (
-                    <Box>
+                    <Box sx={{ mb: Mobile ? 6 : 0 }}>
                       {heroButton.url.startsWith("/") ? (
                         <Link href={heroButton.url}>
                           <Button variant="angled">{heroButton.text}</Button>

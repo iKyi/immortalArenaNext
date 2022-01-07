@@ -1,6 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import Image from "next/image";
 import { getStrapiMedia } from "../../lib/media";
+import MarkdownParser from "../MarkdownParser";
 import ComplexTitle from "../Reusable/ComplexTitle";
 
 export type ANewWayBoxPropsType = {
@@ -18,7 +19,9 @@ const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
   // *************** RENDER *************** //
   return (
     <Box>
-      <ComplexTitle>Why Immortal Arena?</ComplexTitle>
+      <ComplexTitle>
+        <MarkdownParser>{title}</MarkdownParser>
+      </ComplexTitle>
       <Box sx={{ my: 4 }}>
         <Typography variant="body2">{content}</Typography>
       </Box>

@@ -7,13 +7,19 @@ import FaqBox from "../components/HomepageComponents/FaqBox";
 import ListeOnBox from "../components/HomepageComponents/ListeOnBox";
 import HowItWorksSummary from "../components/HomepageComponents/HowItWorksSummary";
 import WhyBox from "../components/HomepageComponents/WhyBox";
+import MileStonesBox, {
+  IMilestoneEntry,
+} from "../components/HomepageComponents/MileStonesBox";
 
 type HomeProps = {
   main: Record<any, any>;
+  posts: any[];
 };
 
-const Home: NextPage<HomeProps> = ({ main }) => {
-  const { seo, backgroundImage } = main;
+const Home: NextPage<HomeProps> = ({ main, posts }) => {
+  const { seo, backgroundImage, milestones } = main;
+
+  console.log(posts.slice(Math.max(posts.length - 4, 1)));
 
   return (
     <LayoutWrapper bgImg={backgroundImage}>
@@ -21,6 +27,7 @@ const Home: NextPage<HomeProps> = ({ main }) => {
       <HeroBox data={main} />
       <ListeOnBox data={main} />
       <HowItWorksSummary data={main} />
+      <MileStonesBox data={milestones as IMilestoneEntry[]} />
       <WhyBox data={main} />
       <FaqBox data={main} />
     </LayoutWrapper>
@@ -29,9 +36,12 @@ const Home: NextPage<HomeProps> = ({ main }) => {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [main] = await Promise.all([fetchAPI("/home-page?populate=*")]);
+  const [main, posts] = await Promise.all([
+    fetchAPI("/home-page?populate=*"),
+    fetchAPI("/posts?sort[0]=updatedAt"),
+  ]);
   return {
-    props: { main },
+    props: { main, posts },
     revalidate: 60,
   };
 }
