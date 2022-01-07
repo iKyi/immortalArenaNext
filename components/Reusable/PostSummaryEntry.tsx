@@ -1,9 +1,14 @@
 import {
   Box,
   CardActionArea,
+  Chip,
+  Collapse,
   Link as MUILink,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
+import { useState } from "react";
+import MOBILE_SIZE from "../../constants/mobileSize";
 import { getStrapiURL } from "../../lib/api";
 import { IPost } from "../../lib/interfaces/post";
 import { getStrapiMedia } from "../../lib/media";
@@ -18,12 +23,23 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
   children,
   data,
 }) => {
+  const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
+
+  const [expanded, setExpanded] = useState<boolean>(false);
+
   const { attributes } = data;
   console.log(attributes);
+  const categoryText = attributes?.category?.data?.attributes?.name ?? null;
   // *************** RENDER *************** //
   return (
-    <MUILink component={Link} passhref href={`/blog/posts/${attributes.slug}`}>
+    <div
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+    >
       <CardActionArea
+        component={Link}
+        passhref
+        href={`/blog/posts/${attributes.slug}`}
         sx={{
           background: `url('${getStrapiMedia(attributes.image)}')`,
           backgroundSize: "cover",
@@ -31,20 +47,45 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
           backgroundRepeat: "center center",
           display: "flex",
           flexDirection: "column",
-          minHeight: "350px",
+          minHeight: !Mobile ? "260px" : "200px",
+          color: "transparent",
         }}
       >
         <Box
           sx={{
+            width: "100%",
             marginTop: "auto",
+            padding: Mobile ? 1.5 : 2.3,
+            textAlign: "left",
+            transition: "all .2s",
+            color: "common.white",
+            backgroundColor: expanded ? "rgba(0,0,0,0.75)" : "transparent",
           }}
         >
-          <Typography variant="h5" sx={{ fontFamily: "Iceland" }}>
+          {categoryText && (
+            <Chip
+              variant="filled"
+              label={categoryText}
+              size="small"
+              color="secondary"
+              sx={{ textTransform: "uppercase", marginBottom: 1 }}
+            />
+          )}
+          <Typography
+            variant="h5"
+            sx={{
+              fontFamily: "Iceland",
+              color: expanded ? "primary.main" : "inherit",
+            }}
+          >
             {attributes.title}
           </Typography>
+          <Collapse in={expanded}>
+            <Typography variant="body1">{attributes.description}</Typography>
+          </Collapse>
         </Box>
       </CardActionArea>
-    </MUILink>
+    </div>
   );
 };
 

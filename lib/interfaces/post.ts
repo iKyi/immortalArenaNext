@@ -1,6 +1,7 @@
 export interface IPost {
   id: number;
   attributes: {
+    category?: Record<any, any>;
     content: string;
     createdAt: string;
     description: string | null;

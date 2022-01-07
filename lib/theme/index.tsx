@@ -40,6 +40,12 @@ let ImmortalMuITheme = createTheme({
 const getOverRides = (theme: Theme) => {
   return {
     components: {
+      MuiChip: {
+        props: { variant: "filled" },
+        style: {
+          backgroundColor: "transparent",
+        },
+      },
       MuiButton: {
         variants: [
           {
