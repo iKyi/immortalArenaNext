@@ -112,7 +112,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                   key={item.url}
                   active={router.pathname === item.url}
                   onClick={() => router.push(item.url)}
-                  aria-label="Mobile Menu Button"
+                  aria-label={`Navigation button ${item.name}`}
                 >
                   {item.name}
                 </HeaderNavButton>
@@ -124,6 +124,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                 marginLeft: Mobile ? "auto" : "initial",
               }}
               variant="contained"
+              aria-label="Mobile menu Button"
               onClick={() => setMobileOpen(true)}
             >
               <MenuIcon />
