@@ -30,9 +30,9 @@ const FaqTitle: React.VFC<FaqTitlePropsType> = ({ children }) => {
         FAQs
       </Typography>
       <Typography
-        variant="h5"
         sx={{
           fontSize: "1.25rem",
+          fontFamily: "Iceland",
           mt: 2,
         }}
       >
