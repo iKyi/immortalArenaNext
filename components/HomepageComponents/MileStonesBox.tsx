@@ -43,7 +43,16 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
           opacity: !active ? 0.4 : 1,
         }}
       >
-        <Typography variant="h5">{title}</Typography>
+        <Typography
+          sx={{
+            fontWeight: "300",
+            color: "primary.main",
+            marginBottom: 1.3,
+            fontSize: "1.15rem",
+          }}
+        >
+          {title}
+        </Typography>
         <Typography variant="body2">{content}</Typography>
       </Box>
     </Box>

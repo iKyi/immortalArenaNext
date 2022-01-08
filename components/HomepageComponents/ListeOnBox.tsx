@@ -53,8 +53,11 @@ const ListeOnBox: React.VFC<ListeOnBoxPropsType> = ({ children, data }) => {
                 <img
                   src={getStrapiURL(attributes.url).replace("/api/", "/")}
                   alt={attributes.alternativeText}
-                  width="100%"
-                  height="auto"
+                  width="auto"
+                  style={{
+                    maxWidth: "100%",
+                  }}
+                  height="35px"
                 />
               </Box>
             </Grid>
