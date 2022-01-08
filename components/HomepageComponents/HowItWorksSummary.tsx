@@ -88,6 +88,7 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
                 width={427}
                 height={667}
                 src={getStrapiMedia(charactersBoxImg)}
+                alt="Chracter example image"
               />
             </Box>
           </Grid>

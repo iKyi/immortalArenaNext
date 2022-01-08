@@ -28,7 +28,7 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const { attributes } = data;
-  console.log(attributes);
+
   const categoryText = attributes?.category?.data?.attributes?.name ?? null;
   // *************** RENDER *************** //
   return (
@@ -38,7 +38,6 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
     >
       <CardActionArea
         component={Link}
-        passhref
         href={`/blog/posts/${attributes.slug}`}
         sx={{
           background: `url('${getStrapiMedia(attributes.image)}')`,

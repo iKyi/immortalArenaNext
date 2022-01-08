@@ -41,10 +41,14 @@ const getOverRides = (theme: Theme) => {
   return {
     components: {
       MuiChip: {
-        props: { variant: "filled" },
-        style: {
-          backgroundColor: "transparent",
-        },
+        variants: [
+          {
+            props: { color: "secondary", variant: "filled" },
+            style: {
+              background: "#990325 !important",
+            },
+          },
+        ],
       },
       MuiButton: {
         variants: [

@@ -82,6 +82,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`${item.icon} link button`}
                 sx={{
                   color: "white",
                   display: "flex",
@@ -111,6 +112,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                   key={item.url}
                   active={router.pathname === item.url}
                   onClick={() => router.push(item.url)}
+                  aria-label="Mobile Menu Button"
                 >
                   {item.name}
                 </HeaderNavButton>
