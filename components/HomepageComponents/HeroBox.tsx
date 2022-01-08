@@ -9,6 +9,7 @@ import { Box } from "@mui/system";
 import MarkdownParser from "../MarkdownParser";
 import MOBILE_SIZE from "../../constants/mobileSize";
 import Link from "next/link";
+import { getStrapiMedia } from "../../lib/media";
 
 export type HeroBoxPropsType = {
   children?: any;
@@ -16,8 +17,10 @@ export type HeroBoxPropsType = {
 };
 
 const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
-  const { introText, introVideoUrl, heroButton } = data;
+  const { introText, introVideoUrl, heroButton, videoLazyLoadImage } = data;
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
+
+  const { data: imageData } = videoLazyLoadImage;
 
   // *************** RENDER *************** //
   return (
@@ -132,11 +135,16 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                 <iframe
                   width="100%"
                   height="280"
-                  src={introVideoUrl}
-                  title="YouTube video player"
+                  src={`${introVideoUrl}`}
+                  srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=${introVideoUrl}><img src=${
+                    imageData
+                      ? getStrapiMedia(videoLazyLoadImage)
+                      : "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png"
+                  } alt='Video Immortal Arena'><span>▶</span></a>`}
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen={true}
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Video Immortal Arena"
                 />
               </Box>
             </Box>

@@ -71,8 +71,8 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
             />
           )}
           <Typography
-            variant="h5"
             sx={{
+              fontSize: "1.45rem",
               fontFamily: "Iceland",
               color: expanded ? "primary.main" : "inherit",
             }}
