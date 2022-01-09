@@ -27,9 +27,14 @@ const ImageWrapper: React.VFC<{ article: any }> = ({ article }) => {
         <Box
           sx={{
             position: "relative",
-            backgroundImage: `url('${getStrapiURL(
-              image.data.attributes.formats.large.url
-            ).replace("/api/", "/")}')`,
+            backgroundImage: `url('${
+              image && image.data
+                ? getStrapiURL(image.data.attributes.formats.large.url).replace(
+                    "/api/",
+                    "/"
+                  )
+                : ""
+            }')`,
             backgroundSize: !Mobile ? "auto 100%" : "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",

@@ -24,7 +24,6 @@ const ElemWrapper: React.VFC<ElemWrapperType> = ({ link, children }) => {
   return link.startsWith("/") ? (
     <Link
       href={link}
-      passHref
       sx={{
         textDecoration: "none",
       }}
