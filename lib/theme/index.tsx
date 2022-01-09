@@ -7,6 +7,7 @@ declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
     angled: true;
     complex: true;
+    coming: true;
   }
 }
 
@@ -92,6 +93,34 @@ const getOverRides = (theme: Theme) => {
                 background: `url(/complex_button.png)`,
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
+                color: theme.palette.secondary.main,
+              },
+            },
+          },
+          {
+            props: { variant: "coming" },
+            style: {
+              background: `url(/buttons/coming.png)`,
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              fontFamily: "Iceland",
+              fontSize: "1.35rem",
+              paddingLeft: 36,
+              paddingRight: 36,
+              paddingBottom: 30,
+              paddingTop: 2,
+              color: "#fff",
+              svg: {
+                transition: "all .3s",
+              },
+              clipPath:
+                "polygon(10% 0, 90% 0, 100% 80%, 90% 100%, 10% 100%, 0 80%);",
+
+              "&:hover": {
+                svg: {
+                  filter:
+                    "invert(27%) sepia(34%) saturate(5129%) hue-rotate(328deg) brightness(98%) contrast(97%);",
+                },
                 color: theme.palette.secondary.main,
               },
             },

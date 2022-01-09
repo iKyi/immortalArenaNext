@@ -27,6 +27,7 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
     <Container
       sx={{
         py: 3,
+        pt: Mobile ? 3 : 4,
         maxWidth: "100%",
       }}
     >

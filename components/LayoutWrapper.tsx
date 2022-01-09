@@ -21,7 +21,7 @@ const LayoutWrapper: React.VFC<LayoutWrapperPropsType> = ({
         background: bgImg ? `url('${getStrapiMedia(bgImg)}')` : "none",
         backgroundPosition: "top center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "fit-content",
+        backgroundSize: Mobile ? "fit-content" : "100% auto",
         // paddingTop: Mobile ? "100px" : "120px",
         flex: 1,
         display: "flex",

@@ -3,20 +3,17 @@ import {
   CardActionArea,
   Chip,
   Collapse,
-  Link as MUILink,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import MOBILE_SIZE from "../../constants/mobileSize";
-import { getStrapiURL } from "../../lib/api";
-import { IPost } from "../../lib/interfaces/post";
 import { getStrapiMedia } from "../../lib/media";
 import Link from "../Link";
 
 export type PostSummaryEntryPropsType = {
   children?: any;
-  data: IPost;
+  data: any;
 };
 
 const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
@@ -27,20 +24,31 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
 
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const { attributes } = data;
+  const articleSource = useMemo(() => {
+    if (data.attributes) {
+      return data.attributes;
+    }
+    return data;
+  }, [data]);
 
-  const categoryText = attributes?.category?.data?.attributes?.name ?? null;
+  const categoryText = articleSource?.category?.data?.attributes?.name ?? null;
+  const categorySlug = articleSource?.category?.data?.attributes?.slug ?? null;
+
+  const artImage = useMemo(() => {
+    if (articleSource.image) {
+      return getStrapiMedia(articleSource.image);
+    }
+    return null;
+  }, [articleSource]);
   // *************** RENDER *************** //
   return (
     <div
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >
-      <CardActionArea
-        component={Link}
-        href={`/blog/posts/${attributes.slug}`}
+      <Box
         sx={{
-          background: `url('${getStrapiMedia(attributes.image)}')`,
+          background: `url('${artImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "center center",
@@ -62,28 +70,49 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
           }}
         >
           {categoryText && (
-            <Chip
-              variant="filled"
-              label={categoryText}
-              size="small"
-              color="secondary"
-              sx={{ textTransform: "uppercase", marginBottom: 1 }}
-            />
+            <Box
+              component={Link}
+              href={`/category/${categorySlug}`}
+              sx={{ textDecoration: "none" }}
+            >
+              <Chip
+                variant="filled"
+                label={categoryText}
+                size="small"
+                color="secondary"
+                sx={{
+                  textTransform: "uppercase",
+                  marginBottom: 1,
+                  cursor: "pointer",
+                }}
+              />
+            </Box>
           )}
-          <Typography
-            sx={{
-              fontSize: "1.45rem",
-              fontFamily: "Iceland",
-              color: expanded ? "primary.main" : "inherit",
+          <CardActionArea
+            component={Link}
+            href={{
+              pathname: `/post/${articleSource.slug}`,
             }}
           >
-            {attributes.title}
-          </Typography>
-          <Collapse in={expanded}>
-            <Typography variant="body1">{attributes.description}</Typography>
-          </Collapse>
+            <Box>
+              <Typography
+                sx={{
+                  fontSize: "1.45rem",
+                  fontFamily: "Iceland",
+                  color: expanded ? "primary.main" : "inherit",
+                }}
+              >
+                {articleSource.title}
+              </Typography>
+            </Box>
+            <Collapse in={expanded}>
+              <Typography sx={{ color: "common.white" }} variant="body1">
+                {articleSource.description}
+              </Typography>
+            </Collapse>
+          </CardActionArea>
         </Box>
-      </CardActionArea>
+      </Box>
     </div>
   );
 };

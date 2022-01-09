@@ -8,6 +8,7 @@ import SeoComp from "../Reusable/Seo";
 import MenuIcon from "@mui/icons-material/Menu";
 import { truncate } from "fs";
 import LogoBox from "./LogoBox";
+import TopComingButtons from "./TopComingButtons";
 
 const navItems = [
   {
@@ -61,7 +62,7 @@ const HeaderNavButton = React.forwardRef((props: any, ref) => {
 HeaderNavButton.displayName = "HeaderNavButton";
 
 const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
-  const { social } = useContext(GlobalContext);
+  const { social, topButtons } = useContext(GlobalContext);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const router = useRouter();
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
@@ -132,13 +133,14 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
           )}
         </Box>
       </Box>
+
+      <TopComingButtons buttons={topButtons} />
+
       <Drawer
         anchor="left"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-      >
-        <p>inner</p>
-      </Drawer>
+      ></Drawer>
     </>
   );
 };

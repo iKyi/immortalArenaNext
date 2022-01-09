@@ -10,7 +10,7 @@ import WhyBox from "../components/HomepageComponents/WhyBox";
 import MileStonesBox, {
   IMilestoneEntry,
 } from "../components/HomepageComponents/MileStonesBox";
-import ArticlesHome from "../components/HomepageComponents/ArticlesHome";
+import ArticlesHome from "../components/Reusable/ArticlesHome";
 
 type HomeProps = {
   main: Record<any, any>;

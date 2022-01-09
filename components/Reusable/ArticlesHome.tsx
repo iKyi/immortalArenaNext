@@ -1,11 +1,10 @@
 import { Box, Container, Grid, useMediaQuery } from "@mui/material";
 import MOBILE_SIZE from "../../constants/mobileSize";
-import { IPost } from "../../lib/interfaces/post";
-import PostSummaryEntry from "../Reusable/PostSummaryEntry";
+import PostSummaryEntry from "./PostSummaryEntry";
 
 export type ArticlesHomePropsType = {
   children?: any;
-  posts: IPost[];
+  posts: any[];
 };
 
 const ArticlesHome: React.VFC<ArticlesHomePropsType> = ({
@@ -15,6 +14,7 @@ const ArticlesHome: React.VFC<ArticlesHomePropsType> = ({
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
   // *************** RENDER *************** //
   if (!posts || posts.length === 0) null;
+
   return (
     <Box
       sx={{
@@ -24,7 +24,13 @@ const ArticlesHome: React.VFC<ArticlesHomePropsType> = ({
       <Container>
         <Grid container spacing={Mobile ? 0 : 6}>
           {posts.map((post) => (
-            <Grid item xs={12} md={6} key={post.id}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              key={post.id ?? post.title}
+              sx={{ pb: Mobile ? 4 : 0 }}
+            >
               <PostSummaryEntry data={post} />
             </Grid>
           ))}
