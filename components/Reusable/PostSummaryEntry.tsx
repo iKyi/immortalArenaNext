@@ -48,7 +48,7 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
     >
       <Box
         sx={{
-          background: `url('${artImage}')`,
+          background: artImage ? `url('${artImage}')` : "#0A1F20",
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "center center",
