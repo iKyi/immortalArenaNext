@@ -41,7 +41,7 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
       return img && img !== "null" ? img : getStrapiMedia(logo);
     }
     return null;
-  }, [articleSource]);
+  }, [articleSource, logo]);
   // *************** RENDER *************** //
   return (
     <div
