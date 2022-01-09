@@ -1,5 +1,4 @@
-import { Box, Button, SvgIcon, Typography } from "@mui/material";
-import { ReactNode } from "react";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import DiscordIcon from "../Icons/DiscordIcon";
 import DownloadIcon from "../Icons/DownloadIcon";
 import Link from "../Link";
@@ -72,41 +71,52 @@ const TopComingButtons: React.VFC<TopComingButtonsPropsType> = ({
 
   // *************** RENDER *************** //
   return (
-    <Box
+    <Grid
+      container
       sx={{
         mt: 5,
         mb: 2,
-        display: "flex",
-        justifyContent: "space-evenly",
       }}
+      justifyContent="space-evenly"
     >
       {buttons.map((item) => {
         return (
-          <ElemWrapper key={item.url} link={item.url}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              textAlign: "center",
+            }}
+            key={item.url}
+          >
+            <ElemWrapper link={item.url}>
               <Box
                 sx={{
                   display: "flex",
-                  lineHeight: 1,
-                  justifyContent: "center",
-                  mb: 0.7,
+                  flexDirection: "column",
                 }}
               >
-                {getIcon(item.icon)}
+                <Box
+                  sx={{
+                    display: "flex",
+                    lineHeight: 1,
+                    justifyContent: "center",
+                    mb: 0.7,
+                  }}
+                >
+                  {getIcon(item.icon)}
+                </Box>
+                <Typography sx={{ fontFamily: "Iceland", lineHeight: 1.1 }}>
+                  {item.text}
+                </Typography>
               </Box>
-              <Typography sx={{ fontFamily: "Iceland" }}>
-                {item.text}
-              </Typography>
-            </Box>
-          </ElemWrapper>
+            </ElemWrapper>
+          </Grid>
         );
       })}
-    </Box>
+    </Grid>
   );
 };
 

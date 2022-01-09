@@ -46,13 +46,13 @@ const ImageWrapper: React.VFC<{ article: any }> = ({ article }) => {
 
 const Article: NextPage<ArticleProps> = ({ article }) => {
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
+  const { title, content, category, description, image } = article;
   const seo = {
-    metaTitle: article.title,
-    metaDescription: article.description,
-    shareImage: article.image,
+    metaTitle: title,
+    metaDescription: description,
+    shareImage: image,
     article: true,
   };
-  const { title, content, category } = article;
 
   return (
     <LayoutWrapper>
