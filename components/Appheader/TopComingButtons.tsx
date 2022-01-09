@@ -72,8 +72,10 @@ const TopComingButtons: React.VFC<TopComingButtonsPropsType> = ({
   // *************** RENDER *************** //
   return (
     <Grid
+      maxWidth="md"
       container
       sx={{
+        margin: "0 auto",
         mt: 5,
         mb: 2,
       }}

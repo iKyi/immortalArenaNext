@@ -107,8 +107,8 @@ const getOverRides = (theme: Theme) => {
               fontSize: "1.35rem",
               paddingLeft: 30,
               paddingRight: 30,
-              paddingBottom: 30,
-              paddingTop: 2,
+              paddingBottom: 8,
+              paddingTop: 4,
               color: "#fff",
               svg: {
                 transition: "all .3s",

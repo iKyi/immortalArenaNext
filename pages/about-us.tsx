@@ -1,7 +1,9 @@
 import { Box } from "@mui/material";
 import { NextPage } from "next";
+import AboutBoxes from "../components/AboutPageComponents/AboutBoxes";
 import AppHeader from "../components/Appheader/AppHeader";
 import LayoutWrapper from "../components/LayoutWrapper";
+import PageHeader from "../components/Reusable/PageHeader";
 import { fetchAPI } from "../lib/api";
 
 type AboutUsProps = {
@@ -10,15 +12,17 @@ type AboutUsProps = {
 };
 
 const AboutUs: NextPage<AboutUsProps> = ({ main, boxes }) => {
-  const { seo, backgroundImage } = main;
-
-  console.log(boxes);
-
+  const { seo, backgroundImage, headerData } = main;
+  const { mainTitle, mainDescription, mainLongDescription } = headerData;
   return (
     <LayoutWrapper bgImg={backgroundImage}>
-      <Box>
-        <AppHeader seo={seo} />
-      </Box>
+      <AppHeader seo={seo} />
+      <PageHeader
+        title={mainTitle}
+        description={mainDescription}
+        longDescription={mainLongDescription}
+      />
+      <AboutBoxes boxes={boxes} />
     </LayoutWrapper>
   );
 };
