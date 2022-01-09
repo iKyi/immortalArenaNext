@@ -6,9 +6,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useContext } from "react";
 import MOBILE_SIZE from "../../constants/mobileSize";
 import { getStrapiMedia } from "../../lib/media";
+import { GlobalContext } from "../../pages/_app";
 import Link from "../Link";
 
 export type PostSummaryEntryPropsType = {
@@ -21,7 +22,7 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
   data,
 }) => {
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
-
+  const { logo } = useContext(GlobalContext);
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const articleSource = useMemo(() => {
@@ -36,7 +37,8 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
 
   const artImage = useMemo(() => {
     if (articleSource.image) {
-      return getStrapiMedia(articleSource.image);
+      const img = getStrapiMedia(articleSource.image);
+      return img && img !== "null" ? img : getStrapiMedia(logo);
     }
     return null;
   }, [articleSource]);
@@ -48,7 +50,7 @@ const PostSummaryEntry: React.VFC<PostSummaryEntryPropsType> = ({
     >
       <Box
         sx={{
-          background: artImage ? `url('${artImage}')` : "#0A1F20",
+          background: `url('${artImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "center center",
