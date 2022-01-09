@@ -87,7 +87,7 @@ const Article: NextPage<ArticleProps> = ({ article }) => {
             mt: 3,
           }}
         >
-          {category && (
+          {category && category.data ? (
             <Box
               component={Link}
               href={`/category/${category.data.attributes.slug}`}
@@ -105,7 +105,7 @@ const Article: NextPage<ArticleProps> = ({ article }) => {
                 }}
               />
             </Box>
-          )}
+          ) : null}
           <Box>
             <Typography>
               {DateTime.fromISO(article.updatedAt).toFormat("dd MMM  yyyy")}
