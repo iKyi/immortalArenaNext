@@ -1,4 +1,13 @@
-import { Box, Button, Link, useMediaQuery, Drawer } from "@mui/material";
+import {
+  Box,
+  Button,
+  Link,
+  useMediaQuery,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import MOBILE_SIZE from "../../constants/mobileSize";
@@ -42,6 +51,23 @@ export type AppHeaderPropsType = {
   children?: any;
   seo: Record<any, any>;
 };
+
+const HeaderMobileNavButton = React.forwardRef((props: any, ref) => {
+  const { active, children, onClick } = props;
+  return (
+    <ListItem
+      onClick={onClick}
+      sx={{
+        bgcolor: active ? "primary.main" : "#141A20",
+        color: active ? "white" : "inherit",
+        flex: 1,
+        fontSize: "1.25rem",
+      }}
+    >
+      <ListItemText> {children}</ListItemText>
+    </ListItem>
+  );
+});
 
 const HeaderNavButton = React.forwardRef((props: any, ref) => {
   const { active, children, onClick } = props;
@@ -123,6 +149,9 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
             <Button
               sx={{
                 marginLeft: Mobile ? "auto" : "initial",
+                clipPath: "none",
+                padding: 1,
+                borderRadius: 3,
               }}
               variant="contained"
               aria-label="Mobile menu Button"
@@ -140,7 +169,28 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
         anchor="left"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-      ></Drawer>
+      >
+        <List
+          sx={{
+            minWidth: "200px",
+            bgcolor: "darkBg.main",
+            height: "100%",
+          }}
+        >
+          {navItems.map((item) => {
+            return (
+              <HeaderMobileNavButton
+                key={item.url}
+                active={router.pathname === item.url}
+                onClick={() => router.push(item.url)}
+                aria-label={`Navigation button ${item.name}`}
+              >
+                {item.name}
+              </HeaderMobileNavButton>
+            );
+          })}
+        </List>
+      </Drawer>
     </>
   );
 };

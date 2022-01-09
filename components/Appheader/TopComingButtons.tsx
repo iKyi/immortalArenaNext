@@ -83,8 +83,7 @@ const TopComingButtons: React.VFC<TopComingButtonsPropsType> = ({
         return (
           <Grid
             item
-            xs={12}
-            sm={6}
+            xs={6}
             md={4}
             sx={{
               textAlign: "center",
