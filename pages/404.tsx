@@ -16,8 +16,8 @@ const FourOhFour: React.VFC<FourOhFourPropsType> = ({ children }) => {
 
   return (
     <LayoutWrapper>
-      <AppHeader seo={fourOhFourSeo} />
       <Container>
+        <AppHeader seo={fourOhFourSeo} />
         <Grid container justifyContent="center" sx={{ marginTop: "25vh" }}>
           <Grid item xs={12} md={6}>
             <Typography

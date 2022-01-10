@@ -19,13 +19,13 @@ const OurTeam: NextPage<OurTeamProps> = ({ main, members }) => {
   return (
     <LayoutWrapper bgImg={backgroundImage}>
       <Box>
-        <AppHeader seo={seo} />
-        <PageHeader
-          title={mainTitle}
-          description={mainDescription}
-          longDescription={mainLongDescription}
-        />
         <Container>
+          <AppHeader seo={seo} />
+          <PageHeader
+            title={mainTitle}
+            description={mainDescription}
+            longDescription={mainLongDescription}
+          />
           <Button color="primary" variant="contained">
             lala
           </Button>

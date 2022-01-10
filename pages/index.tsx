@@ -11,6 +11,7 @@ import MileStonesBox, {
   IMilestoneEntry,
 } from "../components/HomepageComponents/MileStonesBox";
 import ArticlesHome from "../components/Reusable/ArticlesHome";
+import { Container } from "@mui/material";
 
 type HomeProps = {
   main: Record<any, any>;
@@ -22,7 +23,9 @@ const Home: NextPage<HomeProps> = ({ main, posts }) => {
 
   return (
     <LayoutWrapper bgImg={backgroundImage}>
-      <AppHeader seo={seo} />
+      <Container>
+        <AppHeader seo={seo} />
+      </Container>
       <HeroBox data={main} />
       <ListeOnBox data={main} />
       <HowItWorksSummary data={main} />

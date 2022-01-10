@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { NextPage } from "next";
 import AboutBoxes from "../components/AboutPageComponents/AboutBoxes";
 import AppHeader from "../components/Appheader/AppHeader";
@@ -16,12 +16,14 @@ const AboutUs: NextPage<AboutUsProps> = ({ main, boxes }) => {
   const { mainTitle, mainDescription, mainLongDescription } = headerData;
   return (
     <LayoutWrapper bgImg={backgroundImage}>
-      <AppHeader seo={seo} />
-      <PageHeader
-        title={mainTitle}
-        description={mainDescription}
-        longDescription={mainLongDescription}
-      />
+      <Container>
+        <AppHeader seo={seo} />
+        <PageHeader
+          title={mainTitle}
+          description={mainDescription}
+          longDescription={mainLongDescription}
+        />
+      </Container>
       <AboutBoxes boxes={boxes} />
     </LayoutWrapper>
   );

@@ -20,7 +20,7 @@ const AppFooter: React.VFC<AppFooterPropsType> = ({ children }) => {
         textAlign: "center",
         background: `url('/gridBg.png')`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: !Mobile ? "cover" : "fit-content",
+        backgroundSize: "fit-content",
         backgroundPosition: "bottom center",
       }}
     >
