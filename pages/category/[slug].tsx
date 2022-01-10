@@ -23,8 +23,8 @@ const Category: NextPage<CategoryProps> = ({ category, categories }) => {
   return (
     <LayoutWrapper>
       <Box>
-        <AppHeader seo={seo} />
         <Container>
+          <AppHeader seo={seo} />
           <Typography
             variant="h1"
             sx={{

@@ -56,8 +56,8 @@ const Article: NextPage<ArticleProps> = ({ article }) => {
 
   return (
     <LayoutWrapper>
-      <AppHeader seo={seo} />
       <Container>
+        <AppHeader seo={seo} />
         <Box
           sx={{
             mt: 4,
