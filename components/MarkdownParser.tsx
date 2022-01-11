@@ -1,19 +1,13 @@
-import rehypeRaw from 'rehype-raw';
-import ReactMarkdown from 'react-markdown';
-import { ReactNode } from 'react';
+import rehypeRaw from "rehype-raw";
+import ReactMarkdown from "react-markdown";
 
 export type MarkdownParserPropsType = {
-    children: string
-}
+  children: string;
+};
 
 const MarkdownParser: React.VFC<MarkdownParserPropsType> = ({ children }) => {
+  // *************** RENDER *************** //
+  return <ReactMarkdown rehypePlugins={[rehypeRaw]}>{children}</ReactMarkdown>;
+};
 
-    // *************** RENDER *************** //
-    return (
-        <ReactMarkdown rehypePlugins={[rehypeRaw]}  >
-            {children}
-        </ReactMarkdown>
-    )
-}
-
-export default MarkdownParser
+export default MarkdownParser;
