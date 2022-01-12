@@ -57,7 +57,7 @@ const OurTeam: NextPage<OurTeamProps> = ({ main, members }) => {
             {members.length > 0
               ? members.map((item, index: number) => {
                   return (
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={12} sm={6} md={3} key={item.id}>
                       <TeamMemberCard data={item} index={index} key={item.id} />
                     </Grid>
                   );

@@ -108,6 +108,9 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const { url, children } = data;
+  const { pathname } = router;
+
   const active = useMemo(() => {
     if (
       router.pathname === data.url ||
@@ -116,7 +119,7 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
       return true;
     }
     return false;
-  }, []);
+  }, [pathname, url, children]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);

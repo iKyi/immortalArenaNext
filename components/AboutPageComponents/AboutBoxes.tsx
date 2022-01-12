@@ -99,11 +99,11 @@ const AboutBox: React.VFC<{ index: number; data: Record<any, any> }> = ({
               >
                 <MarkdownParser>{title}</MarkdownParser>
               </Typography>
-              <Typography sx={{ marginTop: 2 }}>
+              <Box sx={{ marginTop: 2 }}>
                 <MarkdownParser>{content}</MarkdownParser>
-              </Typography>
+              </Box>
               {actionButton ? (
-                <Box sx={{ marginTop: 2 }}>
+                <Box sx={{ marginTop: 4 }}>
                   {actionButtonUrl.startsWith("/") ? (
                     <Link
                       href={actionButtonUrl}
