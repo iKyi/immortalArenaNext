@@ -18,7 +18,7 @@ const PageHeader: React.VFC<PageHeaderPropsType> = ({
   // *************** RENDER *************** //
   return (
     <Container>
-      <Box sx={{ textAlign: "center", marginTop: 3 }}>
+      <Box sx={{ textAlign: "center", marginTop: 4 }}>
         <Typography
           variant="h1"
           sx={{ fontFamily: "Iceland", fontSize: !Mobile ? "56px" : "2rem" }}

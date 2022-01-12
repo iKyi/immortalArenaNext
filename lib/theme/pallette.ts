@@ -28,6 +28,13 @@ const getDesignTokens = (mode: PaletteMode) => ({
           darkBg: {
             main: "#0A1117",
           },
+          rarities: {
+            epic: "#6C2CF4",
+            eternal: "#2CB8F4",
+            common: "#CFCFCF",
+            immortal: "#F62C5A",
+            mythic: "#F8D866",
+          },
         }),
   },
 });
