@@ -26,8 +26,6 @@ const TeamMemberCard: React.VFC<TeamMemberCardPropsType> = ({
   const { attributes } = data;
   const { name, title, description } = attributes;
 
-  console.log(data);
-
   const url = getStrapiMedia(data.attributes.img);
   const odd = index % 2 === 0;
   // *************** RENDER *************** //
