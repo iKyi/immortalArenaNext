@@ -117,10 +117,6 @@ const getOverRides = (theme: Theme) => {
                 "polygon(10% 0, 90% 0, 100% 80%, 90% 100%, 10% 100%, 0 80%);",
 
               "&:hover": {
-                svg: {
-                  filter:
-                    "invert(27%) sepia(34%) saturate(5129%) hue-rotate(328deg) brightness(98%) contrast(97%);",
-                },
                 color: theme.palette.secondary.main,
               },
             },
