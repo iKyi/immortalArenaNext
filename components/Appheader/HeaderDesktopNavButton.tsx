@@ -3,10 +3,13 @@ import { Button } from "@mui/material";
 
 const HeaderNavButton = React.forwardRef((props: any, ref) => {
   const { active, children, onClick } = props;
+
+  const cleanProps = { ...props, active: undefined };
+
   return (
     <Button
       onClick={onClick}
-      {...props}
+      {...cleanProps}
       sx={{
         fontSize: "1.1rem",
         bgcolor: (theme) =>

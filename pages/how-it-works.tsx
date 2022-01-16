@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { NextPage } from "next";
 import AppHeader from "../components/Appheader/AppHeader";
 import LayoutWrapper from "../components/LayoutWrapper";
+import PageHeader from "../components/Reusable/PageHeader";
 import { fetchAPI } from "../lib/api";
 
 type HowItWorksProps = {
@@ -9,11 +10,17 @@ type HowItWorksProps = {
 };
 
 const HowItWorks: NextPage<HowItWorksProps> = ({ main }) => {
-  const { seo, backgroundImage } = main;
+  const { seo, backgroundImage, pageHeader } = main;
+  const { mainTitle, mainDescription, mainLongDescription } = pageHeader || {};
   return (
     <LayoutWrapper bgImg={backgroundImage}>
       <Container>
         <AppHeader seo={seo} />
+        <PageHeader
+          title={mainTitle}
+          description={mainDescription}
+          longDescription={mainLongDescription}
+        />
       </Container>
     </LayoutWrapper>
   );

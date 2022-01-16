@@ -41,15 +41,6 @@ let ImmortalMuITheme = createTheme({
   shape: {
     borderRadius: 0,
   },
-  // components: {
-  //   MuiOutlinedInput: {
-  //     styleOverrides: {
-  //       root: {
-  //         back
-  //       }
-  //     }
-  //   }
-  // }
 });
 
 const getOverRides = (theme: Theme) => {
@@ -62,9 +53,6 @@ const getOverRides = (theme: Theme) => {
               color: "primary",
             },
             style: {
-              // ":root": {
-              //   borderColor: "rgba(0,0,0,0.35)",
-              // },
               background: theme.palette.darkSecondary.secondary,
             },
           },
@@ -158,6 +146,8 @@ const getOverRides = (theme: Theme) => {
             position: "relative",
             clipPath:
               "polygon(100% 0%,calc(100% - 15px) 100%,0% 100%,calc(0% + 15px) 0%);",
+            backgroundImage:
+              "polygon(100% 0%,calc(100% - 14px) 100%,0% 100%,calc(0% + 14px) 0%)",
             padding: "6px 26px",
           },
         },

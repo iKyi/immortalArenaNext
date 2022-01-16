@@ -1,6 +1,7 @@
 import { Container, Grid, useMediaQuery } from "@mui/material";
 import { NextPage } from "next";
 import AppHeader from "../components/Appheader/AppHeader";
+import AddressBox from "../components/ContactPage/AddressBox";
 import ContactFormBox from "../components/ContactPage/ContactFormBox";
 import LayoutWrapper from "../components/LayoutWrapper";
 import PageHeader from "../components/Reusable/PageHeader";
@@ -13,7 +14,19 @@ type ContactUsProps = {
 
 const ContactUs: NextPage<ContactUsProps> = ({ main }) => {
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
-  const { seo, pageHeader, formTitle, backgroundImage } = main;
+  const {
+    seo,
+    pageHeader,
+    formTitle,
+    backgroundImage,
+    srlName,
+    addressValue,
+    companyValue,
+    addressText,
+    socialsTitle,
+  } = main;
+
+  console.log(main);
   const { mainTitle, mainDescription, mainLongDescription } = pageHeader || {};
   return (
     <LayoutWrapper bgImg={backgroundImage}>
@@ -24,16 +37,29 @@ const ContactUs: NextPage<ContactUsProps> = ({ main }) => {
           description={mainDescription}
           longDescription={mainLongDescription}
         />
-        <Grid container>
+        <Grid
+          container
+          sx={{
+            my: Mobile ? 3.5 : 5.5,
+          }}
+          columnSpacing={Mobile ? 0 : 5}
+        >
           <Grid
             item
             xs={12}
             lg={6}
             sx={{
               order: Mobile ? 3 : 1,
+              mt: Mobile ? 3 : 0,
             }}
           >
-            test
+            <AddressBox
+              title={addressText}
+              addressValue={addressValue}
+              companyValue={companyValue}
+              srlName={srlName}
+              socialsTitle={socialsTitle}
+            />
           </Grid>
           <Grid
             item

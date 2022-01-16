@@ -49,7 +49,6 @@ const ContactFormBox: React.VFC<ContactFormBoxPropsType> = ({
   return (
     <Box
       sx={{
-        mt: 5,
         mb: 2,
         px: 1,
       }}
