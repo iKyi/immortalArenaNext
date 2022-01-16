@@ -1,17 +1,20 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import MarkdownParser from "../MarkdownParser";
 
 export type FaqTitlePropsType = {
-  children?: any;
+  title: string;
+  description?: string;
 };
 
-const FaqTitle: React.VFC<FaqTitlePropsType> = ({ children }) => {
+const FaqTitle: React.VFC<FaqTitlePropsType> = ({ title, description }) => {
   // *************** RENDER *************** //
   return (
     <Box
       sx={{
         py: 3.5,
         textAlign: "center",
+        mb: 2,
       }}
     >
       <Typography
@@ -27,17 +30,19 @@ const FaqTitle: React.VFC<FaqTitlePropsType> = ({ children }) => {
           padding: "10px 0 20px 0",
         }}
       >
-        FAQs
+        <MarkdownParser>{title}</MarkdownParser>
       </Typography>
-      <Typography
-        sx={{
-          fontSize: "1.25rem",
-          fontFamily: "Iceland",
-          mt: 2,
-        }}
-      >
-        Our Frequently Asked Questions (FAQs) section
-      </Typography>
+      {description && (
+        <Box
+          sx={{
+            fontSize: "1.25rem",
+            fontFamily: "Iceland",
+            mt: 2,
+          }}
+        >
+          <MarkdownParser>{description}</MarkdownParser>
+        </Box>
+      )}
     </Box>
   );
 };

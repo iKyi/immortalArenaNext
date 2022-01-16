@@ -1,4 +1,7 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
+import Image from "next/image";
+import MOBILE_SIZE from "../../constants/mobileSize";
+import FaqTitle from "./FaqTitle";
 
 export interface IMilestoneEntry {
   active?: boolean;
@@ -9,7 +12,8 @@ export interface IMilestoneEntry {
 
 export type MileStonesBoxPropsType = {
   children?: any;
-  data: IMilestoneEntry[];
+  milestones: IMilestoneEntry[];
+  data: any;
 };
 
 const Milestone: React.VFC<IMilestoneEntry> = ({
@@ -22,9 +26,9 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
   return (
     <Box
       sx={{
-        width: "256px",
+        width: "320px",
         maxWidth: "100%",
-        marginBottom: 3,
+        marginBottom: 1.5,
         "&:last-of-type": {
           marginBottom: 0,
         },
@@ -33,38 +37,54 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
     >
       <Box
         sx={{
-          background: `url('/milestoneBg.png')`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center center",
-          px: 4,
-          py: 3.8,
-          filter: !active ? "blur(1px) grayscale(70%)" : "none",
-          opacity: !active ? 0.4 : 1,
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <Typography
+        <Box sx={{ p: 2.5, order: right ? 1 : 2 }}>
+          <Box sx={{ width: "42px", height: "42px" }}>
+            <Image src="/icons/circleIcon.png" width="42" height="42" />
+          </Box>
+        </Box>
+        <Box
           sx={{
-            fontWeight: "300",
-            color: "primary.main",
-            marginBottom: 1.3,
-            fontSize: "1.15rem",
+            background: `url('/milestoneBg.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center center",
+            px: 4,
+            py: 3.8,
+            filter: !active ? "blur(1px) grayscale(70%)" : "none",
+            opacity: !active ? 0.4 : 1,
+            order: right ? 2 : 1,
           }}
         >
-          {title}
-        </Typography>
-        <Typography variant="body2">{content}</Typography>
+          <Typography
+            sx={{
+              fontWeight: "300",
+              color: "secondary.main",
+              marginBottom: 0.85,
+              fontSize: "1.55rem",
+              fontFamily: "Iceland",
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography variant="body2">{content}</Typography>
+        </Box>
       </Box>
     </Box>
   );
 };
 
 const MileStonesBox: React.VFC<MileStonesBoxPropsType> = ({
-  children,
+  milestones,
   data,
 }) => {
+  const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
+  const { milestonesTitle, milestonesDescription } = data;
   // *************** RENDER *************** //
-  if (!data || data.length === 0) {
+  if (!milestones || milestones.length === 0) {
     return null;
   }
   return (
@@ -75,11 +95,12 @@ const MileStonesBox: React.VFC<MileStonesBoxPropsType> = ({
         backgroundRepeat: "no-repeat,no-repeat",
         backgroundSize: "auto 100%,auto 100%",
         backgroundPosition: "center right,center center",
-        py: 5,
+        py: Mobile ? 5 : 8,
       }}
     >
-      <Container maxWidth="xs">
-        {data.map((item, index) => {
+      <FaqTitle title={milestonesTitle} description={milestonesDescription} />
+      <Container maxWidth="md">
+        {milestones.map((item, index) => {
           return (
             <Milestone
               key={item.id}

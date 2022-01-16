@@ -29,7 +29,7 @@ const Home: NextPage<HomeProps> = ({ main, posts }) => {
       <HeroBox data={main} />
       <ListeOnBox data={main} />
       <HowItWorksSummary data={main} />
-      <MileStonesBox data={milestones as IMilestoneEntry[]} />
+      <MileStonesBox data={main} milestones={milestones as IMilestoneEntry[]} />
       <WhyBox data={main} />
       <FaqBox data={main} />
       <ArticlesHome posts={posts} />

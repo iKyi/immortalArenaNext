@@ -3,6 +3,7 @@ import {
   Container,
   Grid,
   Typography,
+  Link as MUILink,
   useMediaQuery,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -85,13 +86,15 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                           <Button variant="angled">{heroButton.text}</Button>
                         </Link>
                       ) : (
-                        <a
+                        <Button
+                          variant="angled"
+                          component={MUILink}
                           href={heroButton.url}
                           rel="noreferrer"
                           target="_blank"
                         >
                           {heroButton.text}
-                        </a>
+                        </Button>
                       )}
                     </Box>
                   )}

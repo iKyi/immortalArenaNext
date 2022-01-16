@@ -24,6 +24,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
           },
           darkSecondary: {
             main: "#990325",
+            secondary: "#141A20",
           },
           darkBg: {
             main: "#0A1117",

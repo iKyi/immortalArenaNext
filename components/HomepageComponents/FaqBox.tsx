@@ -73,7 +73,7 @@ const QuestionItem: React.VFC<{ title: string; content: string }> = ({
 };
 
 const FaqBox: React.VFC<FaqBoxPropsType> = ({ children, data }) => {
-  const { faq } = data;
+  const { faq, faqTitle, faqDescription } = data;
 
   // const { leftSide, rightSide } = useMemo(() => {
   //     const lSide: any[] = [];
@@ -97,7 +97,7 @@ const FaqBox: React.VFC<FaqBoxPropsType> = ({ children, data }) => {
   // *************** RENDER *************** //
   return (
     <Container sx={{ pb: 3.5 }}>
-      <FaqTitle />
+      <FaqTitle title={faqTitle} description={faqDescription} />
       <Grid container justifyContent="center" spacing={2} rowSpacing={2}>
         {faq.map((item: any) => {
           return (

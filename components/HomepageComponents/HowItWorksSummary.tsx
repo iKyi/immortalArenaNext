@@ -1,5 +1,12 @@
 import MOBILE_SIZE from "../../constants/mobileSize";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Typography,
+  Link as MUiLink,
+} from "@mui/material";
 import Link from "next/link";
 import ComplexTitle from "../Reusable/ComplexTitle";
 import { useMediaQuery } from "@mui/material";
@@ -56,13 +63,15 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
                     <Button variant="angled">{howitWorksButton.text}</Button>
                   </Link>
                 ) : (
-                  <a
+                  <Button
+                    component={MUiLink}
+                    variant="angled"
                     href={howitWorksButton.url}
                     target="_blank"
                     rel="noreferrer"
                   >
                     {howitWorksButton.text}
-                  </a>
+                  </Button>
                 )}
               </Box>
             )}

@@ -9,8 +9,10 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Link as MUILink,
+  SvgIcon,
 } from "@mui/material";
-import { ArrowDropDownTwoTone } from "@mui/icons-material";
+import { ArrowDropDownTwoTone, Dashboard } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import React, { useContext, useState, useMemo } from "react";
 import MOBILE_SIZE from "../../constants/mobileSize";
@@ -20,6 +22,8 @@ import SeoComp from "../Reusable/Seo";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoBox from "./LogoBox";
 import TopComingButtons from "./TopComingButtons";
+import HeaderDesktopNavButton from "./HeaderDesktopNavButton";
+import HeaderMobileNavButton from "./HeaderMobileNavButton";
 
 interface INavItem {
   name: string;
@@ -48,6 +52,14 @@ const navItems: INavItem[] = [
         name: "Cards",
         url: "/cards",
       },
+      {
+        name: "How it works",
+        url: "/how-it-works",
+      },
+      {
+        name: "How to earn",
+        url: "/how-to-earn",
+      },
     ],
   },
   {
@@ -64,43 +76,6 @@ export type AppHeaderPropsType = {
   children?: any;
   seo: Record<any, any>;
 };
-
-const HeaderMobileNavButton = React.forwardRef((props: any, ref) => {
-  const { active, children, onClick } = props;
-  return (
-    <ListItem
-      onClick={onClick}
-      sx={{
-        bgcolor: active ? "primary.main" : "#141A20",
-        color: active ? "white" : "inherit",
-        flex: 1,
-        fontSize: "1.25rem",
-        ...props.sx,
-      }}
-    >
-      <ListItemText> {children}</ListItemText>
-    </ListItem>
-  );
-});
-HeaderMobileNavButton.displayName = "HeaderMobileNavigationButton";
-
-const HeaderNavButton = React.forwardRef((props: any, ref) => {
-  const { active, children, onClick } = props;
-  return (
-    <Button
-      onClick={onClick}
-      sx={{
-        bgcolor: active ? "primary.main" : "#141A20",
-        color: active ? "white" : "inherit",
-        flex: 1,
-        fontSize: "1.25rem",
-      }}
-    >
-      {children}
-    </Button>
-  );
-});
-HeaderNavButton.displayName = "HeaderNavButton";
 
 const HeaderNavMenu = React.forwardRef((props: any, ref) => {
   const router = useRouter();
@@ -135,18 +110,17 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
 
   return (
     <>
-      <Button
+      <HeaderDesktopNavButton
         onClick={handleClick}
+        active={active || open}
         sx={{
-          bgcolor: active ? "primary.main" : "#141A20",
-          color: active ? "white" : "inherit",
           flex: 1,
-          fontSize: "1.25rem",
+          marginRight: "-10px",
         }}
         endIcon={<ArrowDropDownTwoTone />}
       >
         {data.name}
-      </Button>
+      </HeaderDesktopNavButton>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -163,11 +137,18 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
           return (
             <MenuItem
               sx={{
+                fontSize: "1.1rem",
+                fontFamily: "Iceland",
                 minWidth: "170px",
                 textAlign: "center",
                 bgcolor:
                   router.pathname === subL.url ? "primary.main" : "#141A20",
-                color: router.pathname === subL.url ? "white" : "inherit",
+                color:
+                  router.pathname === subL.url ? "common.black" : "inherit",
+                pointerEvents: router.pathname === subL.url ? "none" : "all",
+                "&:hover": {
+                  color: "#fff",
+                },
               }}
               key={subL.url}
               onClick={(event: any) => handleUrlClick(event, subL.url)}
@@ -182,8 +163,25 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
 });
 HeaderNavMenu.displayName = "HeaderNavMenu";
 
+const DashboardButton: React.VFC = () => {
+  const { appUrl } = useContext(GlobalContext);
+  return (
+    <HeaderDesktopNavButton
+      size="large"
+      sx={{
+        clipPath: "polygon(100% 0%,100% 100%,0% 100%,15px 0%);",
+      }}
+      component={MUILink}
+      href={appUrl}
+      startIcon={<Dashboard color="primary" />}
+    >
+      Dashboard
+    </HeaderDesktopNavButton>
+  );
+};
+
 const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
-  const { social, topButtons } = useContext(GlobalContext);
+  const { social, topButtons, appUrl } = useContext(GlobalContext);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const router = useRouter();
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
@@ -228,22 +226,29 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
         >
           <LogoBox />
           {!Mobile ? (
-            navItems.map((item) => {
-              if (!item.children) {
-                return (
-                  <HeaderNavButton
-                    key={item.url}
-                    active={router.pathname === item.url}
-                    onClick={() => router.push(item?.url ?? "/")}
-                    aria-label={`Navigation button ${item.name}`}
-                  >
-                    {item.name}
-                  </HeaderNavButton>
-                );
-              } else {
-                return <HeaderNavMenu key={item.url} data={item} />;
-              }
-            })
+            <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
+              {navItems.map((item) => {
+                if (!item.children) {
+                  return (
+                    <HeaderDesktopNavButton
+                      key={item.url}
+                      active={router.pathname === item.url}
+                      onClick={() => router.push(item?.url ?? "/")}
+                      aria-label={`Navigation button ${item.name}`}
+                      sx={{
+                        flex: 1,
+                        marginRight: "-10px",
+                      }}
+                    >
+                      {item.name}
+                    </HeaderDesktopNavButton>
+                  );
+                } else {
+                  return <HeaderNavMenu key={item.url} data={item} />;
+                }
+              })}
+              <DashboardButton />
+            </Box>
           ) : (
             <Button
               sx={{
@@ -303,6 +308,18 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
               });
             }
           })}
+          <ListItem
+            component={MUILink}
+            href={appUrl}
+            sx={{
+              bgcolor: "darkSecondary.secondary",
+              color: "inherit",
+              flex: 1,
+              fontSize: "1.25rem",
+            }}
+          >
+            <ListItemText>Dashboard</ListItemText>
+          </ListItem>
         </List>
       </Drawer>
     </>
