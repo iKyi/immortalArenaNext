@@ -16,9 +16,10 @@ import { Container } from "@mui/material";
 type HomeProps = {
   main: Record<any, any>;
   posts: any[];
+  races: any;
 };
 
-const Home: NextPage<HomeProps> = ({ main, posts }) => {
+const Home: NextPage<HomeProps> = ({ main, posts, races }) => {
   const { seo, backgroundImage, milestones } = main;
 
   return (
@@ -28,7 +29,7 @@ const Home: NextPage<HomeProps> = ({ main, posts }) => {
       </Container>
       <HeroBox data={main} />
       <ListeOnBox data={main} />
-      <HowItWorksSummary data={main} />
+      <HowItWorksSummary data={main} races={races} />
       <MileStonesBox data={main} milestones={milestones as IMilestoneEntry[]} />
       <WhyBox data={main} />
       <FaqBox data={main} />
@@ -39,13 +40,14 @@ const Home: NextPage<HomeProps> = ({ main, posts }) => {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [main, posts] = await Promise.all([
+  const [main, posts, races] = await Promise.all([
     fetchAPI("/home-page?populate=*"),
     fetchAPI("/posts?populate=*&sort[0]=updatedAt"),
+    fetchAPI("/races?populate=*&sort[0]=updatedAt"),
   ]);
   let filteredPosts = posts.slice(Math.max(posts.length - 4, 1));
   return {
-    props: { main, posts: filteredPosts },
+    props: { main, posts: filteredPosts, races },
     revalidate: 60,
   };
 }

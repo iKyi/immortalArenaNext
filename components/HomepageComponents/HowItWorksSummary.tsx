@@ -12,15 +12,18 @@ import ComplexTitle from "../Reusable/ComplexTitle";
 import { useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { getStrapiMedia } from "../../lib/media";
+import RaceToggleBox from "./RaceToggleBox";
 
 export type HowItWorksSummaryPropsType = {
   children?: any;
   data: Record<any, any>;
+  races: any[];
 };
 
 const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
   children,
   data,
+  races,
 }) => {
   const { howitWorks, howitWorksButton, charactersBoxImg } = data;
   const Mobile = useMediaQuery(`(max-width:${MOBILE_SIZE})`);
@@ -88,18 +91,10 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
                   display: "inline-block",
                 }}
               >
-                Characters
+                Generals
               </ComplexTitle>
             </Box>
-
-            <Box sx={{ pt: 3, textAlign: Mobile ? "center" : "right" }}>
-              <Image
-                width={427}
-                height={667}
-                src={getStrapiMedia(charactersBoxImg)}
-                alt="Chracter example image"
-              />
-            </Box>
+            <RaceToggleBox races={races} />
           </Grid>
         </Grid>
       </Box>

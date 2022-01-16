@@ -26,7 +26,6 @@ const ContactUs: NextPage<ContactUsProps> = ({ main }) => {
     socialsTitle,
   } = main;
 
-  console.log(main);
   const { mainTitle, mainDescription, mainLongDescription } = pageHeader || {};
   return (
     <LayoutWrapper bgImg={backgroundImage}>

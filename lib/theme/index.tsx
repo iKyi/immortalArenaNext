@@ -58,6 +58,26 @@ const getOverRides = (theme: Theme) => {
           },
         ],
       },
+      MuiButtonGroup: {
+        styleOverrides: {
+          root: {
+            button: {
+              textShadow: "none",
+              fontSize: "1.05rem",
+              "&:first-of-type": {
+                clipPath:
+                  "polygon(1px 1px, calc(0% + 10px) 1px, calc(100% - 2px) 1px, calc(100% - 2px) calc(100% - 1px),calc(0% + 10px) calc(100% - 1px), 1px calc(100% - 10px))",
+              },
+              clipPath:
+                "polygon(1px 1px, calc(100% - 1px) 1px, calc(100% - 1px) calc(100% - 1px), 1px calc(100% - 1px))",
+              "&:last-of-type": {
+                clipPath:
+                  "polygon(2px 1px, calc(100% - 10px) 1px, calc(100% - 1px) calc(0% + 10px), calc(100% - 1px) calc(100% - 10px), calc(100% - 1px) calc(100% - 1px), 2px calc(100% - 1px));",
+              },
+            },
+          },
+        },
+      },
       MuiChip: {
         variants: [
           {
@@ -144,6 +164,7 @@ const getOverRides = (theme: Theme) => {
             fontFamily: "Iceland",
             textShadow: "1px 1px 0px rgba(0,0,0,0.75)",
             position: "relative",
+            color: theme.palette.darkBg.main,
             clipPath:
               "polygon(100% 0%,calc(100% - 15px) 100%,0% 100%,calc(0% + 15px) 0%);",
             backgroundImage:
