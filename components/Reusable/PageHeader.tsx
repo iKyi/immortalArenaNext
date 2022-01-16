@@ -39,18 +39,13 @@ const PageHeader: React.VFC<PageHeaderPropsType> = ({
         {longDescription && (
           <Box
             sx={{
-              width: "500px",
+              width: "600px",
               maxWidth: "100%",
               margin: "0 auto",
+              mt: 2,
             }}
           >
-            <Typography
-              sx={{
-                fontSize: "1.1rem",
-              }}
-            >
-              {longDescription}
-            </Typography>
+            <Typography variant="body1">{longDescription}</Typography>
           </Box>
         )}
       </Box>

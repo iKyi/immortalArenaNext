@@ -9,9 +9,9 @@ type HowItWorksProps = {
 };
 
 const HowItWorks: NextPage<HowItWorksProps> = ({ main }) => {
-  const { seo } = main;
+  const { seo, backgroundImage } = main;
   return (
-    <LayoutWrapper>
+    <LayoutWrapper bgImg={backgroundImage}>
       <Container>
         <AppHeader seo={seo} />
       </Container>

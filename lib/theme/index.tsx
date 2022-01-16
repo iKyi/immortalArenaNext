@@ -1,4 +1,9 @@
-import { createTheme, CssBaseline, PaletteMode } from "@mui/material";
+import {
+  createTheme,
+  CssBaseline,
+  PaletteMode,
+  ThemeOptions,
+} from "@mui/material";
 import { Theme, ThemeProvider } from "@mui/system";
 import { createContext, ReactNode, useMemo, useState } from "react";
 import { ImmortalColorsGetter } from "./pallette";
@@ -36,11 +41,35 @@ let ImmortalMuITheme = createTheme({
   shape: {
     borderRadius: 0,
   },
+  // components: {
+  //   MuiOutlinedInput: {
+  //     styleOverrides: {
+  //       root: {
+  //         back
+  //       }
+  //     }
+  //   }
+  // }
 });
 
 const getOverRides = (theme: Theme) => {
-  return {
+  const ThemeObj: Partial<ThemeOptions> = {
     components: {
+      MuiOutlinedInput: {
+        variants: [
+          {
+            props: {
+              color: "primary",
+            },
+            style: {
+              // ":root": {
+              //   borderColor: "rgba(0,0,0,0.35)",
+              // },
+              background: theme.palette.darkSecondary.secondary,
+            },
+          },
+        ],
+      },
       MuiChip: {
         variants: [
           {
@@ -167,6 +196,7 @@ const getOverRides = (theme: Theme) => {
       },
     },
   };
+  return ThemeObj;
 };
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
