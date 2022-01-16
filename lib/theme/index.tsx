@@ -142,7 +142,7 @@ const getOverRides = (theme: Theme) => {
         styleOverrides: {
           root: {
             fontFamily: "Iceland",
-            textShadow: "1px 1px 0px rgba(0,0,0,0.35)",
+            textShadow: "1px 1px 0px rgba(0,0,0,0.75)",
             position: "relative",
             clipPath:
               "polygon(100% 0%,calc(100% - 15px) 100%,0% 100%,calc(0% + 15px) 0%);",

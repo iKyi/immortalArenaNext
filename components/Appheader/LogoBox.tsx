@@ -21,7 +21,6 @@ const LogoBox: React.VFC<LogoBoxPropsType> = ({ children }) => {
         flex: 1,
         maxWidth: Mobile ? "80px" : "140px",
         position: "relative",
-        height: "43",
         marginRight: !Mobile ? "-10px" : "initial",
       }}
     >
