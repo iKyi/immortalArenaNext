@@ -89,7 +89,7 @@ export async function getStaticProps() {
   // Run API calls in parallel
   const [main, cards, factions, rarities, types] = await Promise.all([
     await fetchAPI("/cards-page?populate=*"),
-    await fetchAPI("/cards?populate=*"),
+    await fetchAPI("/cards?populate=*&pagination[pageSize]=100"),
     await fetchAPI("/factions?populate=*"),
     await fetchAPI("/card-rarities?populate=*"),
     await fetchAPI("/card-types?populate=*"),
