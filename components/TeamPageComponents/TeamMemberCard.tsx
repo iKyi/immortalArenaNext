@@ -6,7 +6,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import Image from "next/image";
 import MOBILE_SIZE from "../../constants/mobileSize";
 import { getStrapiMedia } from "../../lib/media";
 import { ITeamMember } from "../../pages/our-team";

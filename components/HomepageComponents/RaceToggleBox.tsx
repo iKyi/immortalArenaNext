@@ -2,6 +2,7 @@ import { Box, Button, ButtonGroup, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { useState, useMemo, useEffect } from "react";
 import MOBILE_SIZE from "../../constants/mobileSize";
+import imageLoader from "../../lib/imageLoader";
 import { getStrapiMedia } from "../../lib/media";
 
 export type RaceToggleBoxPropsType = {
@@ -33,6 +34,7 @@ const RaceToggleBox: React.VFC<RaceToggleBoxPropsType> = ({ races }) => {
         {imageAttrs && activeItem && (
           <Box sx={{ textAlign: "center", mt: 1.5 }} key={activeItem.name}>
             <Image
+              loader={imageLoader}
               src={getStrapiMedia(activeItem.bigImage)}
               height={imageAttrs.height}
               width={imageAttrs.width}

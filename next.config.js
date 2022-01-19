@@ -2,6 +2,8 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['api.immortalarena.io'],
+    domains: ["api.immortalarena.io"],
+    loader: "imgix",
+    path: "",
   },
-}
+};

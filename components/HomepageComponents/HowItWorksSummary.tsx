@@ -9,8 +9,6 @@ import {
 } from "@mui/material";
 import ComplexTitle from "../Reusable/ComplexTitle";
 import { useMediaQuery } from "@mui/material";
-import Image from "next/image";
-import { getStrapiMedia } from "../../lib/media";
 import RaceToggleBox from "./RaceToggleBox";
 import Link from "../Link";
 

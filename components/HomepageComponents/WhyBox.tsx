@@ -2,6 +2,7 @@ import { Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
 import MOBILE_SIZE from "../../constants/mobileSize";
+import imageLoader from "../../lib/imageLoader";
 import { getStrapiMedia } from "../../lib/media";
 import ComplexTitle from "../Reusable/ComplexTitle";
 import ANewWayBox from "./ANewWayBox";
@@ -36,6 +37,7 @@ const WhyBox: React.VFC<WhyBoxPropsType> = ({ children, data }) => {
             </Box>
             {whyImage && (
               <Image
+                loader={imageLoader}
                 width={573}
                 height={219}
                 src={getStrapiMedia(whyImage)}

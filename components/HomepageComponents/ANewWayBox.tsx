@@ -1,5 +1,6 @@
 import { Typography, Box } from "@mui/material";
 import Image from "next/image";
+import imageLoader from "../../lib/imageLoader";
 import { getStrapiMedia } from "../../lib/media";
 import MarkdownParser from "../MarkdownParser";
 import ComplexTitle from "../Reusable/ComplexTitle";
@@ -27,6 +28,7 @@ const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
       </Box>
       {imgUrl && (
         <Image
+          loader={imageLoader}
           width={354}
           height={132}
           src={getStrapiMedia(imgUrl)}

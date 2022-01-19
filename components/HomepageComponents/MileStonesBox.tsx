@@ -1,6 +1,7 @@
 import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import MOBILE_SIZE from "../../constants/mobileSize";
+import imageLoader from "../../lib/imageLoader";
 import MarkdownParser from "../MarkdownParser";
 import FaqTitle from "./FaqTitle";
 
@@ -45,6 +46,7 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
         <Box sx={{ p: 2.5, order: right ? 1 : 2 }}>
           <Box sx={{ width: "42px", height: "42px" }}>
             <Image
+              loader={imageLoader}
               src="/icons/circleIcon.png"
               width="42"
               height="42"
