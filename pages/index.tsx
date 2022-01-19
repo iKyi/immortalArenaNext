@@ -45,7 +45,8 @@ export async function getStaticProps() {
     fetchAPI("/posts?populate=*&sort[0]=updatedAt"),
     fetchAPI("/races?populate=*&sort[0]=updatedAt"),
   ]);
-  let filteredPosts = posts.slice(Math.max(posts.length - 4, 1));
+  let filteredPosts =
+    posts.length > 4 ? posts.slice(Math.max(posts.length - 4, 1)) : posts;
   return {
     props: { main, posts: filteredPosts, races },
     revalidate: 60,

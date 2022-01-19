@@ -31,7 +31,7 @@ const RaceToggleBox: React.VFC<RaceToggleBoxPropsType> = ({ races }) => {
     return (
       <Box>
         {imageAttrs && activeItem && (
-          <Box sx={{ textAlign: "center", mt: 1.5 }}>
+          <Box sx={{ textAlign: "center", mt: 1.5 }} key={activeItem.name}>
             <Image
               src={getStrapiMedia(activeItem.bigImage)}
               height={imageAttrs.height}
