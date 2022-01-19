@@ -64,7 +64,7 @@ const AboutBox: React.VFC<{ index: number; data: Record<any, any> }> = ({
               <Box
                 sx={{
                   background: `url('${imageElementData}')`,
-                  backgroundSize: "auto 100%",
+                  backgroundSize: "100%",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
                   minHeight: "300px",
