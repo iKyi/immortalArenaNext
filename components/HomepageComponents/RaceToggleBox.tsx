@@ -14,6 +14,7 @@ const RaceToggleBox: React.VFC<RaceToggleBoxPropsType> = ({ races }) => {
 
   useEffect(() => {
     races.length > 0 && setActiveItem(races[0].attributes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const imageAttrs = useMemo(() => {

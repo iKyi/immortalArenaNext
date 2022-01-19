@@ -79,7 +79,7 @@ const CardsWrapper: React.VFC<CardsWrapperPropsType> = ({
       return null;
     }
     return factions.find((item) => item.attributes.name === factionFilter);
-  }, [factionFilter]);
+  }, [factionFilter, factions]);
 
   const filtersCount = useMemo(() => {
     let amount = 0;
@@ -121,7 +121,7 @@ const CardsWrapper: React.VFC<CardsWrapperPropsType> = ({
       );
     }
     return workingData;
-  }, [factionFilter, rarityFilter, typeFilter]);
+  }, [rarityFilter, typeFilter, activeFaction, cards]);
 
   const resetFilters = () => {
     setFactionFilter("all");

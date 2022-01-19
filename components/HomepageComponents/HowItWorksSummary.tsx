@@ -62,9 +62,13 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
             {howitWorksButton && (
               <Box>
                 {howitWorksButton.url.startsWith("/") ? (
-                  <Link href={howitWorksButton.url}>
-                    <Button variant="angled">{howitWorksButton.text}</Button>
-                  </Link>
+                  <Button
+                    component={Link}
+                    href={howitWorksButton.url}
+                    variant="angled"
+                  >
+                    {howitWorksButton.text}
+                  </Button>
                 ) : (
                   <Button
                     component={MUiLink}

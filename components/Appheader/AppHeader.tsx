@@ -88,8 +88,8 @@ const HeaderNavMenu = React.forwardRef((props: any, ref) => {
 
   const active = useMemo(() => {
     if (
-      router.pathname === data.url ||
-      data.children.some((item: any) => item.url === router.pathname)
+      pathname === url ||
+      children.some((item: any) => item.url === pathname)
     ) {
       return true;
     }
