@@ -203,6 +203,9 @@ const getOverRides = (theme: Theme) => {
           ".TS": {
             color: theme.palette.secondary.main,
           },
+          img: {
+            maxWidth: "100%",
+          },
         },
       },
     },

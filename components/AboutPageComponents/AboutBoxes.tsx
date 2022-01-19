@@ -1,5 +1,5 @@
 import { FormatListNumberedSharp } from "@mui/icons-material";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography, Link as MUILink } from "@mui/material";
 import Container from "@mui/material/Container";
 import { Box } from "@mui/system";
 import { useMemo } from "react";
@@ -112,14 +112,14 @@ const AboutBox: React.VFC<{ index: number; data: Record<any, any> }> = ({
                       <Button variant="angled">{actionButtonText}</Button>
                     </Link>
                   ) : (
-                    <a
+                    <MUILink
                       style={{ textDecoration: "none" }}
                       href={actionButtonUrl}
                       rel="noreferrer"
                       target="_blank"
                     >
                       {actionButtonText}
-                    </a>
+                    </MUILink>
                   )}
                 </Box>
               ) : null}

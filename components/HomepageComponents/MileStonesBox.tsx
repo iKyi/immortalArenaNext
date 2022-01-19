@@ -1,6 +1,7 @@
 import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import MOBILE_SIZE from "../../constants/mobileSize";
+import MarkdownParser from "../MarkdownParser";
 import FaqTitle from "./FaqTitle";
 
 export interface IMilestoneEntry {
@@ -43,7 +44,12 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
       >
         <Box sx={{ p: 2.5, order: right ? 1 : 2 }}>
           <Box sx={{ width: "42px", height: "42px" }}>
-            <Image src="/icons/circleIcon.png" width="42" height="42" />
+            <Image
+              src="/icons/circleIcon.png"
+              width="42"
+              height="42"
+              alt="Circle Icon"
+            />
           </Box>
         </Box>
         <Box
@@ -70,7 +76,13 @@ const Milestone: React.VFC<IMilestoneEntry> = ({
           >
             {title}
           </Typography>
-          <Typography variant="body2">{content}</Typography>
+          <Box
+            sx={{
+              fontSize: "0.93rem",
+            }}
+          >
+            <MarkdownParser>{content}</MarkdownParser>
+          </Box>
         </Box>
       </Box>
     </Box>

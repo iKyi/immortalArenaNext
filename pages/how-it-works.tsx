@@ -1,7 +1,8 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { NextPage } from "next";
 import AppHeader from "../components/Appheader/AppHeader";
 import LayoutWrapper from "../components/LayoutWrapper";
+import MarkdownParser from "../components/MarkdownParser";
 import PageHeader from "../components/Reusable/PageHeader";
 import { fetchAPI } from "../lib/api";
 
@@ -10,7 +11,7 @@ type HowItWorksProps = {
 };
 
 const HowItWorks: NextPage<HowItWorksProps> = ({ main }) => {
-  const { seo, backgroundImage, pageHeader } = main;
+  const { seo, backgroundImage, pageHeader, content } = main;
   const { mainTitle, mainDescription, mainLongDescription } = pageHeader || {};
   return (
     <LayoutWrapper bgImg={backgroundImage}>
@@ -21,6 +22,11 @@ const HowItWorks: NextPage<HowItWorksProps> = ({ main }) => {
           description={mainDescription}
           longDescription={mainLongDescription}
         />
+        {content && (
+          <Box sx={{ my: 3 }}>
+            <MarkdownParser>{content}</MarkdownParser>
+          </Box>
+        )}
       </Container>
     </LayoutWrapper>
   );
