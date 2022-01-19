@@ -75,7 +75,7 @@ const Article: NextPage<ArticleProps> = ({ article }) => {
           </Typography>
         </Box>
         <ImageWrapper article={article} />
-        <Box>
+        <Box sx={{ mt: 4 }}>
           <MarkdownParser>{content}</MarkdownParser>
         </Box>
         <Container
