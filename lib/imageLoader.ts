@@ -6,7 +6,7 @@ const imageLoader = ({
 }: {
   src: any;
   width: any;
-  height: string;
+  height?: string;
   quality?: any;
 }) => {
   return `${src}?w${width}&h=${height}&q=${quality}`;
