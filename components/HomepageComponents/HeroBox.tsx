@@ -9,8 +9,8 @@ import {
 import { Box } from "@mui/system";
 import MarkdownParser from "../MarkdownParser";
 import MOBILE_SIZE from "../../constants/mobileSize";
-import Link from "next/link";
 import { getStrapiMedia } from "../../lib/media";
+import Link from "../Link";
 
 export type HeroBoxPropsType = {
   children?: any;
@@ -82,13 +82,13 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                   {heroButton && (
                     <Box sx={{ mb: Mobile ? 6 : 0 }}>
                       {heroButton.url.startsWith("/") ? (
-                        <Button
-                          component={Link}
+                        <Link
                           href={heroButton.url}
+                          component={Button}
                           variant="angled"
                         >
                           {heroButton.text}
-                        </Button>
+                        </Link>
                       ) : (
                         <Button
                           variant="angled"

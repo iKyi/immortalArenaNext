@@ -7,12 +7,12 @@ import {
   Typography,
   Link as MUiLink,
 } from "@mui/material";
-import Link from "next/link";
 import ComplexTitle from "../Reusable/ComplexTitle";
 import { useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import { getStrapiMedia } from "../../lib/media";
 import RaceToggleBox from "./RaceToggleBox";
+import Link from "../Link";
 
 export type HowItWorksSummaryPropsType = {
   children?: any;
@@ -63,16 +63,16 @@ const HowItWorksSummary: React.VFC<HowItWorksSummaryPropsType> = ({
               <Box>
                 {howitWorksButton.url.startsWith("/") ? (
                   <Button
+                    variant="angled"
                     component={Link}
                     href={howitWorksButton.url}
-                    variant="angled"
                   >
                     {howitWorksButton.text}
                   </Button>
                 ) : (
                   <Button
-                    component={MUiLink}
                     variant="angled"
+                    component={MUiLink}
                     href={howitWorksButton.url}
                     target="_blank"
                     rel="noreferrer"
