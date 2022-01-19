@@ -97,7 +97,7 @@ const HeroBox: React.VFC<HeroBoxPropsType> = ({ children, data }) => {
                           rel="noreferrer"
                           target="_blank"
                         >
-                          {heroButton.text}
+                          <Box>{heroButton.text}</Box>
                         </Button>
                       )}
                     </Box>
