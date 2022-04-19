@@ -9,7 +9,7 @@ export type ANewWayBoxPropsType = {
   children?: any;
   title: string;
   content: string;
-  imgUrl: string;
+  imgUrl: Record<any, any>;
 };
 
 const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
@@ -17,6 +17,8 @@ const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
   content,
   imgUrl,
 }) => {
+  const imageUrl = getStrapiMedia(imgUrl);
+
   // *************** RENDER *************** //
   return (
     <Box>
@@ -26,12 +28,12 @@ const ANewWayBox: React.VFC<ANewWayBoxPropsType> = ({
       <Box sx={{ my: 4 }}>
         <Typography variant="body2">{content}</Typography>
       </Box>
-      {imgUrl && (
+      {imageUrl && (
         <Image
           loader={imageLoader}
           width={354}
           height={132}
-          src={getStrapiMedia(imgUrl)}
+          src={imageUrl}
           alt="A new way to earn AEXP"
         />
       )}
