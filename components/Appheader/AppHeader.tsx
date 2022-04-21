@@ -10,7 +10,6 @@ import {
   Menu,
   MenuItem,
   Link as MUILink,
-  SvgIcon,
 } from "@mui/material";
 import { ArrowDropDownTwoTone, Dashboard } from "@mui/icons-material";
 import { useRouter } from "next/router";
@@ -24,6 +23,7 @@ import LogoBox from "./LogoBox";
 import TopComingButtons from "./TopComingButtons";
 import HeaderDesktopNavButton from "./HeaderDesktopNavButton";
 import HeaderMobileNavButton from "./HeaderMobileNavButton";
+import WalletLoginButtonTheme from "../Reusable/WalletLoginButtonTheme";
 
 interface INavItem {
   name: string;
@@ -204,7 +204,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
                 rel="noreferrer"
                 aria-label={`${item.icon} link button`}
                 sx={{
-                  color: "white",
+                  color: "#fff",
                   display: "flex",
                   alignItems: "center",
                   padding: 1,
@@ -217,6 +217,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
               </Link>
             );
           })}
+          <WalletLoginButtonTheme />
         </Box>
         <Box
           sx={{

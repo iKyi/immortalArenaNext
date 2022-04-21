@@ -102,7 +102,7 @@ const AddressBox: React.VFC<AddressBoxPropsType> = ({
               rel="noreferrer"
               aria-label={`${item.icon} link button`}
               sx={{
-                color: "white",
+                color: "#fff",
                 display: "flex",
                 alignItems: "center",
                 padding: 1,
