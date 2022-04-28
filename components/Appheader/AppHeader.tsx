@@ -172,10 +172,10 @@ const DashboardButton: React.VFC = () => {
         clipPath: "polygon(100% 0%,100% 100%,0% 100%,15px 0%);",
       }}
       component={MUILink}
-      href={appUrl}
+      href={"/staking"}
       startIcon={<Dashboard color="primary" />}
     >
-      Dashboard
+      Staking
     </HeaderDesktopNavButton>
   );
 };
@@ -311,7 +311,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
           })}
           <ListItem
             component={MUILink}
-            href={appUrl}
+            href={"/staking"}
             sx={{
               bgcolor: "darkSecondary.secondary",
               color: "inherit",
@@ -319,7 +319,7 @@ const AppHeader: React.VFC<AppHeaderPropsType> = ({ children, seo }) => {
               fontSize: "1.25rem",
             }}
           >
-            <ListItemText>Dashboard</ListItemText>
+            <ListItemText>Staking</ListItemText>
           </ListItem>
         </List>
       </Drawer>

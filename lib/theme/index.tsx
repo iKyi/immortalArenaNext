@@ -91,7 +91,7 @@ const getOverRides = (theme: Theme) => {
       MuiButton: {
         variants: [
           {
-            props: { variant: "angled" },
+            props: { variant: "angled", color: "primary" },
             style: {
               background: `url(/whitepaper_button.png)`,
               backgroundSize: "100% 100%",
@@ -106,6 +106,50 @@ const getOverRides = (theme: Theme) => {
               "&:hover": {
                 backgroundColor: "transparent",
                 background: `url(/whitepaper_button.png)`,
+                backgroundSize: "100% 100%",
+                backgroundRepeat: "no-repeat",
+                color: theme.palette.secondary.main,
+              },
+            },
+          },
+          {
+            props: { variant: "angled", color: "secondary" },
+            style: {
+              background: `url(/red_angle.png)`,
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              fontSize: "1.35rem",
+              textTransform: "none",
+              paddingLeft: 36,
+              paddingRight: 36,
+              color: theme.palette.secondary.main,
+              clipPath:
+                "polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);",
+              "&:hover": {
+                backgroundColor: "transparent",
+                background: `url(/red_angle.png)`,
+                backgroundSize: "100% 100%",
+                backgroundRepeat: "no-repeat",
+                color: theme.palette.primary.main,
+              },
+            },
+          },
+          {
+            props: { variant: "angled", color: "warning" },
+            style: {
+              background: `url(/secondary_angle.png)`,
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              fontSize: "1.35rem",
+              textTransform: "none",
+              paddingLeft: 36,
+              paddingRight: 36,
+              color: "#6C2CF4",
+              clipPath:
+                "polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);",
+              "&:hover": {
+                backgroundColor: "transparent",
+                background: `url(/secondary_angle.png)`,
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
                 color: theme.palette.secondary.main,
